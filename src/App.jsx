@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signOut } from './store';  // your redux slice action
+import { signOut } from './store';
+
+// Import components
 import Menu from './menu';
 import Home from './home';
 import Veg from './veg';
@@ -12,10 +14,10 @@ import AboutUs from './aboutus';
 import SoftDrinks from './softdrinks';
 import NotFound from './notfound';
 import Orders from './orders';
-import TrackOrder from './TrackOrder';
 import TrackOrderMap from './trackordermap';
 import Register from './register';
 import ProtectedRoute from './protectedroute';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const user = useSelector(state => state.user.currentUser);
-  const isLoggedIn = !!user; // boolean indicating login status
+  const isLoggedIn = !!user;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,14 +92,6 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <Orders />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/trackorder"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <TrackOrder />
             </ProtectedRoute>
           }
         />
